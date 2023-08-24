@@ -11,6 +11,11 @@ def curso(req, nombre, camada):
         <p>Curso: {curso.nombre} - Camada: {curso.camada} agregado!! </p>
         """)  
 
+def lista_Cursos(req):
+    lista = Curso.objects.all()
+
+    return render(req,"lista_cursos.html", {"lista_cursos" : lista})
+
 def inicio(req):
     return HttpResponse("vista inicio")
 
