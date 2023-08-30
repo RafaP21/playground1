@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Cursos</title>
-</head>
-<body style="color: blueviolet;">
-    
+{% include 'padre.html' %}
+
+{% block contenidocambiante %}
     <h1>Lista de Cursos</h1>
     <ul>
-        
 
-        
-        {% for curso in lista_cursos  %}
-            <li>{{curso.nombre}}</li>
-        {% endfor %}
-            
 
+
+ {% for curso in lista_cursos  %}
+ <li>{{curso.nombre}}</li>
+ {% endfor %}
     </ul>
+{% endblock contenidocambiante %}
     
-</body>
-</html>
+    

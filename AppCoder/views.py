@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render
 from .models import Curso
 # Create your views here.
@@ -33,3 +33,14 @@ def estudiantes(req):
 
 def entregables (req):
     return render(req, "entregables.html")
+
+
+def curso_formulario(req : HttpRequest):
+    print('method', req.method)
+    print('post', req.POST)
+    if req.method == "POST":
+         curso= Curso(nombre=req.POST["curso"], camada=req.POST["camada"])
+         curso.save()
+
+    
+    return render(req, "curso_formulario.html")
