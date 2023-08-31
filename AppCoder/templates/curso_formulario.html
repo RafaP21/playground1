@@ -3,8 +3,7 @@
 {% block contenidocambiante %}
     
 <form action="{% url 'curso_formulario' %}" method="post" >{% csrf_token %}
-    <p> Curso: <input type="text", curso = "curso"></p>
-    <p> Camada: <input type="number", camada = "camada"></p>
+    {{miformulario.as_p}}
 
     <button type="submit">Enviar</button>
 </form>

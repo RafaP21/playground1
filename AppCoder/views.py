@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpRequest
 from django.shortcuts import render
 from .models import Curso
+from .forms import CursoFormulario
 # Create your views here.
 
 def curso(req, nombre, camada):
@@ -39,8 +40,33 @@ def curso_formulario(req : HttpRequest):
     print('method', req.method)
     print('post', req.POST)
     if req.method == "POST":
-         curso= Curso(nombre=req.POST["curso"], camada=req.POST["camada"])
-         curso.save()
-
+         miformulario = CursoFormulario(req.POST)
+         
+         if miformulario.is_valid():
+             print(miformulario.cleaned_data)
+             data = miformulario.cleaned_data
+             curso= Curso(nombre= data["curso"], camada=data["camada"])
+             curso.save()
+             return render(req, "inicio.html", {"mensaje": "curso creado con exito"})
+       
+         else: 
+             return render(req, "inicio.html", {"mensaje": "formulario invalido"})
+         
+    else:
+        
+        miformulario = CursoFormulario() 
+        return render(req, "curso_formulario.html", {"miformulario" :  miformulario})
     
-    return render(req, "curso_formulario.html")
+def busqueda_camada(req):
+    return render (req, "busquedaCamada.html")
+
+def buscar(req):
+    
+   if req.GET["camada"]:
+        camada = req.GET["camada"]
+        cursos = Curso.objects.filter(camada__icontains=camada)
+        if cursos:
+            return render(req, "resultado.html", {"cursos": cursos})
+    
+   else:
+        return HttpResponse('No escribiste ninguna camada')

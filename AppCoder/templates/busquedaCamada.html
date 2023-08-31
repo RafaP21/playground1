@@ -1,0 +1,10 @@
+{% extends 'padre.html' %}  
+
+{% block contenidocambiante %}
+<form action="{% url 'Buscar' %}" method="get" >
+   
+        <p>Camada = <input type="number" name="camada" ></p>
+    
+        <button type="submit">Buscar</button>
+</form>
+{% endblock contenidocambiante %} 

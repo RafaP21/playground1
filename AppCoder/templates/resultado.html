@@ -1,0 +1,16 @@
+{% extends 'padre.html' %}  
+
+{% block contenidocambiante %}
+    <h1> Resultado de la busqueda: </h1> 
+    <ul>
+        
+        {% for curso in cursos %}
+            <li>
+                {{curso.nombre}} {{curso.camada}}- 
+            </li>
+            
+        {% endfor %}
+            
+
+    </ul>
+{% endblock contenidocambiante %} v
