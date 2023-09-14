@@ -11,8 +11,15 @@ urlpatterns = [
     path ('curso-formulario/', curso_formulario, name = "curso_formulario"),
     path ('busqueda-camada/', busqueda_camada, name = "busquedaCamada"),
     path ('buscar/', buscar, name = "Buscar"),
-  
-  
+    path ('lista-profesores/', listaProfesores, name = "ListaProfesores"),
+    path ('profesor-formulario/', creaProfesor, name = "CrearProfesor"),
+    path ('elimina-profesor/<int:id>/', eliminarProfesor, name = "EliminaProfesor"),
+    path ('editar-profesor/<int:id>/', editarProfesor, name = "EditarProfesor"),
+    path ('lista-cursos/', CursoList.as_view(), name = "ListaCursos"),
+    path ('detalle-curso/<pk>/', CursoDetail.as_view(), name = "DetallaCursos"),
+    path ('crear-cursos/', CursoCreate.as_view(), name = "CreaCursos"),
+    path ('actualiza-curso/<pk>/', CursoUpdate.as_view, name = "ActualizaCursos"),
+    path ('elimina-curso/<pk>/', CursoDelete.as_view(), name = "EliminaCursos"),
 
 ]
 

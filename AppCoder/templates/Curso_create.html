@@ -1,0 +1,13 @@
+{% extends 'padre.html' %}  
+
+    {% block contenidocambiante %}
+        
+    <form action="{% url 'CreaCursos' %}" method="post" >{% csrf_token %}
+        
+        {{form.as_p}}
+
+        <button type="submit">Enviar</button>
+    </form>
+
+
+    {% endblock contenidocambiante %} 
