@@ -5,6 +5,8 @@ from .forms import CursoFormulario, ProfesorFormulario
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
 # Create your views here.
 
 def curso(req, nombre, camada):
@@ -165,10 +167,38 @@ class CursoCreate(CreateView):
 class CursoUpdate(UpdateView):
     model = Curso
     template_name = "Curso_update.html"
-    fields = ["__all__"]
+    fields = ("__all__")
     success_url = "/AppCoder/"
     
 class CursoDelete(DeleteView):
     model = Curso
     template_name = "Curso_delete.html"
     success_url = "/AppCoder/"    
+
+def loginUsuario (req): 
+    
+    if req.method == "POST":
+        
+        miFormulario = AuthenticationForm(req, data= req.POST)
+
+        if miFormulario.is_valid():
+            data = miFormulario.cleaned_data
+            usuario = data["username"]
+            psw = data["password"]
+
+            user= authenticate(username=usuario, password=psw)
+
+            if user is not None:
+                login(req,user)
+                return render(req,"inicio.html", {"mensaje": f"Bienvenido {usuario}"})
+            else:
+                return render (req, "inicio.html", {"mensaje": "Datos Incorrectos"})
+        else : 
+            return render (req, "inicio.html", {"mensaje": "Formulario Invalido"})
+        
+        
+    else: 
+            miFormulario = AuthenticationForm()
+            return render (req, "login.html", {"miFormulario" : miFormulario})    
+
+

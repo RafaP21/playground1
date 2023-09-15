@@ -2,12 +2,12 @@
     <div class="container">
         <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
         <a class="navbar-brand" href="{% url 'estudiantes' %}">Estudiantes</a>
-        <a class="navbar-brand" href="{% url 'cursos' %}">Cursos</a>
+        <a class="navbar-brand" href="{% url 'ListaCursos' %}">Cursos</a>
         <a class="navbar-brand" href="{% url 'ListaProfesores' %}">Profesores</a>
         <a class="navbar-brand" href="{% url 'entregables' %}">Entregables</a>
         <a class="navbar-brand" href="{% url 'curso_formulario' %}">Formulario</a>
 
         
-        <a class="btn btn-primary" href="#signup">Sign Up</a>
+        <a class="btn btn-primary" href="{% url 'Login' %}">Login</a>
     </div>
 </nav>

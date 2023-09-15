@@ -18,8 +18,9 @@ urlpatterns = [
     path ('lista-cursos/', CursoList.as_view(), name = "ListaCursos"),
     path ('detalle-curso/<pk>/', CursoDetail.as_view(), name = "DetallaCursos"),
     path ('crear-cursos/', CursoCreate.as_view(), name = "CreaCursos"),
-    path ('actualiza-curso/<pk>/', CursoUpdate.as_view, name = "ActualizaCursos"),
+    path ('actualiza-curso/<pk>/', CursoUpdate.as_view(), name = "ActualizaCursos"),
     path ('elimina-curso/<pk>/', CursoDelete.as_view(), name = "EliminaCursos"),
+    path ('login/', loginUsuario, name = "Login"),
 
 ]
 

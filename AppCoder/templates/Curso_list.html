@@ -5,17 +5,20 @@
     <ul>
             
     {% for curso in cursos  %}
-    <li>{{curso}}</li>
-    <div>
-        <form action="{% url 'EliminaCursos' curso.id %}" method="post">{% csrf_token %}
+    <li><a href="{% url 'DetallaCursos' curso.id %}"> {{curso.nombre}}</a>
 
-            <button type="submit">Eliminar</button>
-        </form>
-                <button>
+    </li>
+        <div>
+            <button>
 
-                    <a href="{% url 'ActualizaCursos' curso.id %}"> Editar</a>
-                </button>
-    </div>
+                <a href="{% url 'EliminaCursos' curso.id %}"> Eliminar</a>
+            </button>
+            
+            <button>
+
+                <a href="{% url 'ActualizaCursos' curso.id %}"> Editar</a>
+            </button>
+        </div>
     {% endfor %}
         
     </ul>
